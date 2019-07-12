@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<context:component-scan
+		base-package="com.hxzy.zjk.SSH001.dao"></context:component-scan>
+	<context:component-scan
+		base-package="com.hxzy.zjk.SSH001.service"></context:component-scan>
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:jdbc.properties"></property>
+	</bean>
+	<bean id="DataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+	</bean>
+	<bean id="LocalSessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="DataSource"></property>
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:hbm/*.hbm.xml</value>
+			</list>
+
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop> <!--在控制台显示执行的数据库操作语句 -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop><!--指定数据库方言 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop><!--hibernate根据实体自动生成数据库表 -->
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>     <!--在控制台显示执行的数据哭操作语句（格式） -->
+			</props>
+		</property>
+	</bean>
+</beans>

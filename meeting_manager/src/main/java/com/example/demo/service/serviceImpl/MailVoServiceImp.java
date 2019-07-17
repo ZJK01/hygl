@@ -16,13 +16,11 @@ public class MailVoServiceImp implements MailVoService {
 
 	@Override
 	public String getMailSendFrom() {
-		// TODO Auto-generated method stub
 		return mailVoDao.getMailSendFrom();
 	}
 
 	@Override
 	public void SimpleMail(MailVo mailVo, MultipartFile[] files) {
-		// TODO Auto-generated method stub
 		mailVoDao.SimpleMail(mailVo, files);
 	}
 

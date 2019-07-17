@@ -1,10 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<title>用户注册页面</title>
+<link href=" /css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<link href=" /css/bootstrap.css" rel="stylesheet" />
+
+</head>
+<style type="text/css">
+ #td {
+	font-size: 30px;
+	text-align: center;
+	height: 40px;
+	width: 100px;
+}
+
+#tx {
+	border-radius: 8px;
+	width: 250px;
+}
+
+#header {
+	border: #000000 1px solid;
+	height: 50px;
+	width: 100%;
+	background-color: #000000;
+	position: absolute;
+	top: 0;
+}
+
+a:hover {
+	background: #12b7f5;
+	text-decoration: none;
+	color: white;
+}
+
+#table {
+	position: absolute;
+	left: 300px;
+} 
+
+
+body {
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+#ct {
+	font-size: 30px;
+	color: white;
+}
+
+}
+#l {
+	display: inline;
+}
+
+#x {
+	position: absolute;
+	top: 51px;
+	width: 265px;
+	height: 87%;
+/* 	border: 3px #12B7F5 solid; */
+}
+
+ul, li {
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}
+
+body {
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+</style>
 </head>
 <body>
- <p>注册成功</p>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top"
+		style="background: #23527C; position: absolute;">
+		<div th:replace="common/header :: header"></div>
+	</nav>
+	<!-- 左边start  -->
+	<div id="x">
+		<div th:replace="common/left :: left"></div>
+	</div>
+	<!-- 左边end -->
+
+	<div style="position: absolute; left: 263px; top: 51px; width: 1300px;">
+		<div class="container">
+			<label>注册成功</label>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function clickHandler(e) {
+			var v11 = document.getElementById(e);
+			if (v11.style.display == "block") {
+				v11.style.display = "none";
+			} else {
+				v11.style.display = "block";
+			}
+		}
+	</script>
 </body>
 </html>
+

@@ -20,10 +20,10 @@
 				background-size: 100%  ;
 			}
 			 #td{
-				        font-size: 30px;						
-						text-align: center;										 
-						height: 40px;		 
-						width: 100px;	  		
+			        font-size: 30px;						
+					text-align: center;										 
+					height: 40px;		 
+					width: 100px;	  		
 			}
 			#tx{
 				border-radius: 8px;
@@ -47,7 +47,7 @@
 		 }
 		</style>					
 	
-	<body id="body"  >
+	<body id="body">
 	</head>
 	<header id="header" >
 		<table id="table">
@@ -63,18 +63,18 @@
 		 <form th:action="@{/reg}" method="post">
 			<h3 style="margin: 5px;">用户注册</h3>
 			 <input class="form-control" style="margin: 5px;" type="text" name="username" placeholder="用户名" onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('不能为空,字母与数字组合,不能太容易!')" />
-			  <br>
-			 <input    class="form-control" style="margin: 5px;" type="password" name="password"  placeholder="密码" onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('不能为空!')" />
-			 </span><br>
+			  <br/>
+			 <input class="form-control" style="margin: 5px;" type="password" name="password"  placeholder="密码" onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('不能为空!')" />
+			  <br/>
 			<p>性别选择：</p>
-			<select name="sex" style="margin: 5px;" >
+			<select name="sex" style="margin:5px;">
 				<option value="男" >男</option>
 				<option value="女">女</option>
 			</select>
 			 
 			<p>文件上传：</p>
 			<input type="file" name="upload" />
-			 <br>
+			 <br/>
 			 <p>性别选择：</p>
 			<select name="department" style="margin: 5px;" >
 				<option value="营业部" >营业部</option>
@@ -82,12 +82,11 @@
 				<option value="销售部">销售部</option>
 			</select>
 			<input class="form-control" style="margin: 5px;" type="date" name="starttime" placeholder="年/月/日 输入各式:2000/5/25 " onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('不能为空!')"  />
-			 </span><br>	
-			<br>
+			<br/>
 			<input class="form-control" style="margin: 5px;" type="text" name="email"  placeholder="Email" onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('不能为空!邮箱各式##@qq.com or ##@163.com ....')" />
-			 <br>						 
-			<textarea class="form-control" rows="5" cols="20" style="margin: 5px;" type="text" name="introduce" placeholder="个人简介" >
-			</textarea><span th:text="${error7}" ></span><br>	
+			 <br/>						 
+			<textarea class="form-control" rows="5" cols="20" style="margin: 5px;" name="introduce" placeholder="个人简介" >
+			</textarea><br/>	
 			<input style="margin: 5px;"  type="submit"  value="注册用户"  class="btn btn-success" onclick="return checkEmail()"/>			
 		</form>
 		</div>
@@ -100,8 +99,9 @@
             alert("格式不正确！请重新输入");
             $("#email").focus();
             return false;
-        }
- }
+        	} 
+ 		}
+		
 		
 	</script>
 </html>

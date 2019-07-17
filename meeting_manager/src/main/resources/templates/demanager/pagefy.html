@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href=" css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/singness.css" rel="stylesheet">
+<script type="text/javascript" src=" js/jquery-3.3.0.min.js"></script>
+<script type="text/javascript" src=" js/bootstrap.min.js"></script>
+<script type="text/javascript" src=" js/bootstrap.js"></script>
+</head>
+<body id="body">
+	<div class="container">
+		<form th:action="@{/pagefy}" method="get">
+			<table class="table">
+				<tr>
+					<td style="text-align: center;"><input class="form-control"
+						type="text" name="username" placeholder="username"
+						style="height: 30px;" /></td>
+					<td><input class="form-control" type="password"
+						name="password" placeholder="password" style="height: 30px;" /></td>
+					<td style="text-align: center;"><input type="submit"
+						value="查询" style="height: 30px;" class="btn btn-success"></td>
+				</tr>
+				<tr style="text-align: center">
+					<th>id</th>
+					<th>用户名</th>
+					<th style="text-align: center;">操作</th>
+				</tr>
+				<tbody>
+					<tr th:each="user : ${list}" class="success">
+						<td th:text="${user.id}"></td>
+						<td th:text="${user.username}"></td>
+						<td style="text-align: center;"><a
+							th:href="@{../del/{id}=$(user.id)}" th:text="删除"
+							class="btn btn-danger"></a></td>
+					</tr>
+				</tbody>
+				<tr>
+					<td colspan="3" style="text-align: center;"><a
+						th:href="@{../pagefy/?(id=${0})}  " class="btn btn-info">首页</a> <a
+						th:href="@{../pagefy/?(id=${pagecurrent-1 ge 0? pagecurrent-1:0})}"
+						class="btn btn-info">上一页</a> <a
+						th:href="@{../pagefy/?(id=${pagecurrent+1 le pages ? pagecurrent+1:pages})}"
+						class="btn btn-info">下一页</a> <a
+						th:href="@{../pagefy/?(id=${pages})}" class="btn btn-info">末页</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+</body>
+</html>

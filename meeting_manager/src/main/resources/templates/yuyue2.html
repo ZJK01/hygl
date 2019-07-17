@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<style type="text/css">
+body {
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+#ct {
+	font-size: 30px;
+	color: white;
+}
+
+}
+#l {
+	display: inline;
+}
+
+#x {
+	position: fixed;
+	top: 51px;
+	width: 265px;
+	height: 100%;
+	border: 3px #12B7F5 solid;
+}
+
+ul, li {
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top"
+		style="background: #23527C;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" style="font-size: 30px;">CRBS-会议预约管理系统</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a th:text="${user.managerName}"></a></li>
+					<li><a href="#">退出管理系统</a></li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+
+	<!-- 左边start  -->
+	<div id="x">
+		<div style="border: 1px #12B7F5 solid; width: 260px; height: 35px;">
+			<div  class="btn btn-default"
+					style="width: 258px; height: 35px;">个人中心<b class="caret"></b></div>
+			<ul>
+				<li><a href="#">我的预定</a></li>
+				<li><a href="#">我的会议</a></li>
+			</ul>
+
+
+			<div class="btn btn-default " id="2"
+				style="width: 258px; height: 35px;">会议预定</div>
+
+			<div class="btn btn-default " style="width: 258px; height: 35px;">
+				会议室管理<b class="caret"></b>
+			</div>
+
+			<ul>
+				<li><a href="#">添加会议室</a></li>
+				<li><a href="#">查看会议室</a></li>
+			</ul>
+
+			<div class="btn btn-default " style="width: 258px; height: 35px;">
+				部门管理 <b class="caret"></b>
+			</div>
+			<ul>
+				<li><a href="#">员工注册</a></li>
+				<li><a href="#">员工管理</a></li>
+				<li><a href="#">部门管理</a></li>
+			</ul>
+
+
+			<div class="btn btn-default " style="width: 258px; height: 35px;">
+				邮件管理<b class="caret"></b>
+			</div>
+			<ul>
+				<li><a href="#">发送邮件</a></li>
+				<li><a href="#">查看邮件</a></li>
+			</ul>
+
+			<div class="btn btn-default " style="width: 258px; height: 35px;">
+				文件管理<b class="caret"></b>
+			</div>
+			<ul>
+				<li><a href="#">查看文件</a></li>
+				<li><a href="#">发送文件</a></li>
+			</ul>
+
+			<div class="btn btn-default " style="width: 258px; height: 35px;">会议日历</div>
+
+
+		</div>
+	</div>
+
+	<!-- 左边end -->
+
+	<div style="position: absolute; left: 270px; top: 53px; width: 1300px;">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		</div>
+		<h2 class="sub-header">华信智原历史会议</h2>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>会议开始时间</th>
+						<th>会议内容</th>
+						<th>参会人员</th>
+						<th>结束时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1,001</td>
+						<td>Lorem</td>
+						<td>ipsum</td>
+						<td>dolor</td>
+						<td>sit</td>
+					</tr>
+					<tr>
+						<td>1,002</td>
+						<td>amet</td>
+						<td>consectetur</td>
+						<td>adipiscing</td>
+						<td>elit</td>
+					</tr>
+					<tr>
+						<td>1,003</td>
+						<td>Integer</td>
+						<td>nec</td>
+						<td>odio</td>
+						<td>Praesent</td>
+					</tr>
+					<tr>
+						<td>1,003</td>
+						<td>libero</td>
+						<td>Sed</td>
+						<td>cursus</td>
+						<td>ante</td>
+					</tr>
+					<tr>
+						<td>1,004</td>
+						<td>dapibus</td>
+						<td>diam</td>
+						<td>Sed</td>
+						<td>nisi</td>
+					</tr>
+					<tr>
+						<td>1,005</td>
+						<td>Nulla</td>
+						<td>quis</td>
+						<td>sem</td>
+						<td>at</td>
+					</tr>
+					<tr>
+						<td>1,006</td>
+						<td>nibh</td>
+						<td>elementum</td>
+						<td>imperdiet</td>
+						<td>Duis</td>
+					</tr>
+					<tr>
+						<td>1,007</td>
+						<td>sagittis</td>
+						<td>ipsum</td>
+						<td>Praesent</td>
+						<td>mauris</td>
+					</tr>
+					<tr>
+						<td>1,008</td>
+						<td>Fusce</td>
+						<td>nec</td>
+						<td>tellus</td>
+						<td>sed</td>
+					</tr>
+					<tr>
+						<td>1,009</td>
+						<td>augue</td>
+						<td>semper</td>
+						<td>porta</td>
+						<td>Mauris</td>
+					</tr>
+					<tr>
+						<td>1,013</td>
+						<td>torquent</td>
+						<td>per</td>
+						<td>conubia</td>
+						<td>nostra</td>
+					</tr>
+					<tr>
+						<td>1,014</td>
+						<td>per</td>
+						<td>inceptos</td>
+						<td>himenaeos</td>
+						<td>Curabitur</td>
+					</tr>
+					<tr>
+						<td>1,015</td>
+						<td>sodales</td>
+						<td>ligula</td>
+						<td>in</td>
+						<td>libero</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript">
+		/* document.getElementById("1").onclick = clickHandler2;
+		function clickHandler2() {
+			document.getElementById("11")
+		} */
+	</script>
+</body>
+</html>

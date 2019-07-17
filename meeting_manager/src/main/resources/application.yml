@@ -1,0 +1,56 @@
+spring:
+  thymeleaf:
+    cache: false  #开发模式下建议关闭缓存
+    mode: LEGACYHTML5 #去html5遗留标签
+    encoding: UTF-8 #设置模板编码
+  mvc: 
+    view:
+        #prefix: /WEB-INF/views
+        suffix: .html
+  #jpa整合
+  jpa:   
+    show-sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+   #数据连接
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://192.168.1.42:3306/manager?serverTimezone=GMT%2B8&useSSL=false
+    #type: com.alibaba.druid.pool.DruidDataSource
+    
+  redis:
+            #服务器地址
+    host: localhost
+            #端口号
+    port: 6379
+            #客户端超时时间设置（毫秒），默认2000
+    timeout: 3000
+    #Redis缓存数据库索引，默认为0
+    database: 0
+    
+  mail:
+    host: smtp.qq.com  #邮箱服务商的protocol服务器主机 smtp.qq.com
+    username: 1991832949@qq.com  #指定邮箱服务商的邮箱账号
+    password: qftwcozqtvlybgfd #邮箱账号密码或者三方登录授权码
+    protocol: smtp  #邮件协议 smtp
+    default-encoding: utf-8
+
+server:
+  port: 80
+  servlet:
+    context-path: /
+
+#日志配置
+logging:
+  file: D:\gz\gz.log
+  level:
+    root: info #全局设置日志级别
+
+
+
+
+  

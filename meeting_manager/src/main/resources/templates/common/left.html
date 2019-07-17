@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+#ct {
+	font-size: 30px;
+	color: white;
+}
+
+}
+#l {
+	display: inline;
+}
+
+#x {
+	position: relative;
+	top: 51px;
+	width: 265px;
+	height: 100%;
+/* 	border: 3px #12B7F5 solid; */
+}
+
+ul, li {
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+<!-- border: 1px #12B7F5 solid; -->
+	<div style=" width: 260px; height: 35px;"
+		th:fragment="left">
+		<div class="btn btn-default" style="width: 258px; height: 35px;"
+			onclick="clickHandler(11)">
+			个人中心<b class="caret"></b>
+		</div>
+		<ul id="11" style="display: none">
+			<li><a href="#">我的预定</a></li>
+			<li><a href="#">我的会议</a></li>
+		</ul>
+
+
+		<div class="btn btn-default " id="2"
+			style="width: 258px; height: 35px;">会议预定</div>
+
+		<div class="btn btn-default " style="width: 258px; height: 35px;"
+			onclick="clickHandler(33)">
+			会议室管理<b class="caret"></b>
+		</div>
+		<ul id="33" style="display: none">
+			<li><a href="#">添加会议室</a></li>
+			<li><a href="#">查看会议室</a></li>
+		</ul>
+
+		<div class="btn btn-default " style="width: 258px; height: 35px;"
+			onclick="clickHandler(44)">
+			部门管理 <b class="caret"></b>
+		</div>
+		<ul id="44" style="display: none">
+			<li><a href="#">员工注册</a></li>
+			<li><a href="#">员工管理</a></li>
+			<li><a href="#">部门管理</a></li>
+		</ul>
+
+
+		<div class="btn btn-default " style="width: 258px; height: 35px;"
+			onclick="clickHandler(55)">
+			邮件管理<b class="caret"></b>
+		</div>
+		<ul id="55" style="display: none">
+			<li><a th:href="@{/mailvo/}">发送邮件</a></li>
+			<li><a href="#">查看邮件</a></li>
+		</ul>
+
+		<div class="btn btn-default " style="width: 258px; height: 35px;"
+			onclick="clickHandler(66)">
+			文件管理<b class="caret"></b>
+		</div>
+		<ul id="66" style="display: none">
+			<li><a href="#">查看文件</a></li>
+			<li><a href="#">发送文件</a></li>
+		</ul>
+
+		<div class="btn btn-default " style="width: 258px; height: 35px;"><a th:href="@{/calendar/}">会议日历</a></div>
+	</div>
+</body>
+</html>

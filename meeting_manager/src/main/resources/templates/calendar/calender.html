@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title></title>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<style type="text/css">
+body {
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+#ct {
+	font-size: 30px;
+	color: white;
+}
+
+}
+#l {
+	display: inline;
+}
+
+#x {
+	position: absolute;
+	top: 51px;
+	width: 265px;
+	height: 100%;
+/* 	border: 3px #12B7F5 solid; */
+}
+
+ul, li {
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}
+
+thead td, tbody td {
+	width: 20px;
+	height: 20px;
+}
+
+thead td.sun, thead td.sta {
+	color: #eec877;
+}
+
+tbody td {
+	border: 1px solid #eee;
+}
+
+tr td {
+	text-align: center;
+}
+
+input {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+	<!-- 上部分 -->
+	<nav class="navbar navbar-inverse navbar-fixed-top"
+		style="background: #23527C;position: absolute;">
+		<div th:replace="common/header :: header"></div>
+	</nav>
+
+	<!-- 左边start  -->
+	<div id="x">
+		<div th:replace="common/left :: left"></div>
+	</div>
+	<!-- 左边end -->
+
+	<!-- 中间内容 -->
+	<div
+		style="position: absolute; left: 263px; top: 51px; width: 1300px;">
+		<div class="container">
+			<div class="cal-control-box">
+				<span class="glyphicon glyphicon-backward" aria-hidden="true"
+					id="minusyear"></span> <span
+					class="glyphicon glyphicon-chevron-left" aria-hidden="true"
+					id="minusmonth"></span> <input type="text"
+					style="width: 50px; text-align: center" id="year" /> <span>年</span>
+				<input type="text" style="width: 50px; text-align: center"
+					id="month" /> <span>月</span> <span
+					class="glyphicon glyphicon-chevron-right" aria-hidden="true"
+					id="addmonth"></span> <span class="glyphicon glyphicon-forward"
+					aria-hidden="true" id="addyear"></span>
+			</div>
+			<div class="cal-box">
+				<table style="width: 700px; height: 500px;">
+					<thead>
+						<tr>
+							<td class="sun">日</td>
+							<td>一</td>
+							<td>二</td>
+							<td>三</td>
+							<td>四</td>
+							<td>五</td>
+							<td class="sta">六</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		//下拉列表
+		function clickHandler(e) {
+			var v = document.getElementById(e);
+			if (v.style.display == "block") {
+				v.style.display = "none";
+			} else {
+				v.style.display = "block";
+			}
+		}
+		
+		//日历
+		$(function(){
+	        var $td = $('tbody').find('td');
+	 
+	        var date = new Date(),
+	                year = date.getFullYear(),
+	                month = date.getMonth() + 1,
+	                day = date.getDate(),days;
+	 		 $("#year").val(year);
+	 		 $("#month").val(month);
+	 
+	        function initCal(yy,mm,dd){
+	            if(mm ==2 && yy%4 == 0 && yy%100 !==0 ){
+	                days = 28;
+	            }else if(mm == 1 || mm == 3 || mm == 5 || mm == 7 || mm == 8 || mm == 10 || mm == 12){
+	                days = 31;
+	            }else if(mm==4 || mm==6 || mm==9 || mm==11 ){
+	                days = 30;
+	            }else{
+	                days = 29;
+	            }
+	 
+	            var m = mm < 3 ? (mm == 1 ? 13 : 14): mm;
+	            yy = m > 12 ? yy - 1 : yy;
+	            var c = Number(yy.toString().substring(0,2)),
+	                    y = Number(yy.toString().substring(2,4)),
+	                    d = 1;
+	            //蔡勒公式
+	            var week = y + parseInt(y/4) + parseInt(c/4) - 2*c + parseInt(26*(m+1)/10) + d - 1;
+	 
+	            week = week < 0 ? (week%7+7)%7 : week%7;
+	 
+	            for(var i=0 ;i<42;i++){
+	                $td.eq(i).text('');　　　　//清空原来的text文本
+	            }
+	 
+	            for(var i = 0;i < days; i++){
+	                $td.eq( week % 7 +i).text(i+1);　　　　
+	            }
+	        }
+	 
+	        initCal(year,month,day);
+	        
+			$("#minusyear").click(function(){
+				var years=$("#year").val()-1;
+	        	var months=$("#month").val();
+	        		$("#year").val(years);
+	        	initCal(years,months,day);
+	        });
+	        
+	        $("#minusmonth").click(function(){
+	        	var years=$("#year").val();
+	        	var months;
+	        	if($("#month").val()-1<1){     //小于1时要减年份
+	        		months=12;
+	        		years=$("#year").val()-1;
+	        	}else{
+	        		months=$("#month").val()-1;
+	        	}
+	        	$("#year").val(years);
+	        	$("#month").val(months);
+	        	initCal(years,months,day);
+	        });
+	        
+	        
+	        $("#addmonth").click(function(){
+	        	var years=$("#year").val();
+	        	var months;
+	        	if($("#month").val()-1+2>12){     //大于12时要减年份
+	        		months=1;
+	        		years=$("#year").val()-1+2;
+	        	}else{
+	        		months=$("#month").val()-1+2;
+	        	}
+	        	$("#year").val(years);
+	        	$("#month").val(months);
+	        	initCal(years,months,day);
+	        });
+	        
+	        $("#addyear").click(function(){
+	        	var years=$("#year").val()-1+2;
+	        	var months=$("#month").val();
+	        	$("#year").val(years);
+	        	$("#month").val(months);
+	        	initCal(years,months,day);
+	        });
+	        
+	        
+	    })//end
+	</script>
+</body>
+</html>

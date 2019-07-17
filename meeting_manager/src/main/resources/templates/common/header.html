@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>头部栏</title>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<style type="text/css">
+body {
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+#ct {
+	font-size: 30px;
+	color: white;
+}
+
+}
+#l {
+	display: inline;
+}
+
+#x {
+	position: fixed;
+	top: 51px;
+	width: 265px;
+	height: 100%;
+	border: 3px #12B7F5 solid;
+}
+
+ul, li {
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div class="container-fluid" th:fragment="header">
+		<div class="navbar-header">
+			<a class="navbar-brand" style="font-size: 30px;">CRBS-会议预约管理系统</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a th:text="${1}"></a></li>
+				<li><a th:href="@{/manager/}">退出管理系统</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

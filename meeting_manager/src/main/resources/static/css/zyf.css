@@ -1,0 +1,29 @@
+@charset "UTF-8";
+body {
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+#ct {
+	font-size: 30px;
+	color: white;
+}
+
+}
+#l {
+	display: inline;
+}
+
+#x {
+	position: fixed;
+	top: 51px;
+	width: 16.5%;
+	height: 100%;
+	border: 3px #12B7F5 solid;
+}
+
+ul, li {
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}

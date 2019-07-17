@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Signin Template for Bootstrap</title>
+<!-- Bootstrap core CSS -->
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+<script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+</head>
+<style style="text/javascript">
+body {
+	background-image: url(/images/8.jpg);
+	background-repeat: no-repeat;
+	background-size:100%;
+	
+}
+.btn{
+	margin-top:150px;
+	margin:250px auto;
+}
+
+*{
+	margin:0px auto;
+}
+</style>
+
+<body>
+	<div class="container">
+		<form th:action="@{/manager/yuyue}" method="post" style="width:180px;">
+			<div class="btn">
+				<h2 >会议预约管理系统</h2>
+				<br> <input class="form-control" type="text" name="username"
+				placeholder="username"> <br /> <input class="form-control"
+				type="password" name="password" placeholder="Password"> <br />
+				<button type="submit">登陆</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

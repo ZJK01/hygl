@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>用户注册页面</title>
+		<link href=" css/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link href="  css/signin.css" rel="stylesheet">
+		<script type="text/javascript" src=" js/jquery-3.3.0.min.js" ></script>
+		<script type="text/javascript" src=" js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src=" js/bootstrap.js" ></script>
+		<link href=" css/bootstrap.css" rel="stylesheet" /> 
+		<link href=" css/zjw.css" rel="stylesheet" />
+		</head>
+		<style type="text/css">
+			#body{
+				
+				background-image: url(images/8.jpg);
+				background-repeat: no-repeat;
+				background-size: 100%  ;
+			}
+			 #td{
+				        font-size: 30px;						
+						text-align: center;										 
+						height: 40px;		 
+						width: 100px;	  		
+			}
+			#tx{
+				border-radius: 8px;
+				width: 250px;
+			}
+			 #header{
+		 	border: #000000 1px solid; height:50px; width:100%;
+		 	background-color:#000000;
+		 	position: absolute;
+		 	top:0;
+		 	}
+		 	 a:hover{
+		 	background: #12b7f5;
+		 	text-decoration: none;
+		 	color: white;
+			
+		 }
+		 #table{
+			 position: absolute;
+			 left: 300px;
+		 }
+		</style>					
+	
+	<body id="body"  >
+	</head>
+	<header id="header" >
+		<table id="table">
+			<tr>				 
+				 <td id="td"><a id="a" href="#" style="color: white;" >首页</a></td>
+				 <td  id="td"><a id="a" href="#" style="color: white;">下载</a></td> 
+				 <td  id="td"><a id="a" href="#" style="color: white;">动态</a></td> 				 
+			</tr>
+		</table>
+	</header>
+
+		 <div style="position:absolute;left: 650px; top: 70px;">
+		 <form th:action="@{/reg}" method="post">
+			<h3 style="margin: 5px;">用户注册</h3>
+			 <input class="form-control" style="margin: 5px;" type="text" name="username" placeholder="用户名" onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('不能为空,字母与数字组合,不能太容易!')" />
+			  <br>
+			 <input    class="form-control" style="margin: 5px;" type="password" name="password"  placeholder="密码" onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('不能为空!')" />
+			 </span><br>
+			<p>性别选择：</p>
+			<select name="sex" style="margin: 5px;" >
+				<option value="男" >男</option>
+				<option value="女">女</option>
+			</select>
+			 
+			<p>文件上传：</p>
+			<input type="file" name="upload" />
+			 <br>
+			 <p>性别选择：</p>
+			<select name="department" style="margin: 5px;" >
+				<option value="营业部" >营业部</option>
+				<option value="研发部">研发部</option>
+				<option value="销售部">销售部</option>
+			</select>
+			<input class="form-control" style="margin: 5px;" type="date" name="starttime" placeholder="年/月/日 输入各式:2000/5/25 " onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('不能为空!')"  />
+			 </span><br>	
+			<br>
+			<input class="form-control" style="margin: 5px;" type="text" name="email"  placeholder="Email" onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('不能为空!邮箱各式##@qq.com or ##@163.com ....')" />
+			 <br>						 
+			<textarea class="form-control" rows="5" cols="20" style="margin: 5px;" type="text" name="introduce" placeholder="个人简介" >
+			</textarea><span th:text="${error7}" ></span><br>	
+			<input style="margin: 5px;"  type="submit"  value="注册用户"  class="btn btn-success" onclick="return checkEmail()"/>			
+		</form>
+		</div>
+	</body>
+	<script>
+		function checkEmail(e){
+        console.log(e)
+        var $email=$("#email").val();
+        if(!$email.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)){
+            alert("格式不正确！请重新输入");
+            $("#email").focus();
+            return false;
+        }
+ }
+		
+	</script>
+</html>

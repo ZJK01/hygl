@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<title>发送邮件</title>
+<style type="text/css">
+body {
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+#ct {
+	font-size: 30px;
+	color: white;
+}
+
+}
+#l {
+	display: inline;
+}
+
+#x {
+	position: absolute;
+	top: 51px;
+	width: 265px;
+	height: 87%;
+	/* 	border: 3px #12B7F5 solid; */
+}
+
+ul, li {
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}
+</style>
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css" />
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:href="@{/js/bootstrap.min.js}"></script>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top"
+		style="background: #23527C; position: absolute;">
+		<div th:replace="common/header :: header"></div>
+	</nav>
+
+	<!-- 左边start  -->
+	<div id="x">
+		<div th:replace="common/left :: left"></div>
+	</div>
+
+	<!-- 左边end -->
+	<div class="col-md-6"
+		style="margin: 20px; padding: 20px; border: #E0E0E0 1px solid; position: absolute; left: 263px; top: 51px; width: 1300px;">
+		<!-- 		<marquee behavior="alternate" onfinish="alert(12)" id="mq" -->
+		<!-- 			onMouseOut="this.start();$('#egg').text('嗯 真听话！');" -->
+		<!-- 			onMouseOver="this.stop();$('#egg').text('有本事放开我呀！');"> -->
+		<!-- 			<h5 id="egg">祝大家新年快乐！</h5> -->
+		<!-- 			<img id="doge" -->
+		<!-- 				src="http://pics.sc.chinaz.com/Files/pic/faces/3709/7.gif" alt=""> -->
+		<!-- 		</marquee> -->
+
+		<form class="form-horizontal" id="mailForm">
+			<div class="form-group">
+				<label class="col-md-2 control-label">邮件发信人:</label>
+				<div class="col-md-6">
+					<input class="form-control" id="from" name="fromone"
+						th:value="${from}" readonly="readonly">
+				</div>
+			</div>
+			<div class="form-group">
+				<!--收件人半自动选择-->
+				<label class="col-md-2 control-label">邮件收件人:</label>
+				<div class="col-md-6">
+					<input class="form-control" id="to" name="touser" title="多个邮箱使用,隔开">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label">邮件主题:</label>
+				<div class="col-md-6">
+					<input class="form-control" id="subject" name="subject">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label">邮件内容:</label>
+				<div class="col-md-6">
+					<textarea class="form-control" id="text" name="text" rows="5"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label">邮件附件:</label>
+				<div class="col-md-6">
+					<input class="form-control" id="files" name="files" type="file"
+						multiple="multiple">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label">邮件操作:</label>
+				<div class="col-md-3">
+					<a class="form-control btn btn-primary" id="dd">发送邮件</a>
+				</div>
+				<div class="col-md-3">
+					<a class="form-control btn btn-default" onclick="clearForm()">清空</a>
+				</div>
+			</div>
+		</form>
+
+		<script th:inline="javascript">
+        var appCtx = [[${#request.getContextPath()}]];
+ 
+        	$("#dd").click(function(){
+                 $.ajax({
+                     url:"/mail/send",
+                     type: "post",
+                     data:$("#mailForm").serialize(),
+                     
+                     success: function (result) {
+                         alert(result.status === 'ok' ? "发送成功！" : "错误信息：" + result.error);
+                     },
+                     error: function () {
+                         alert("发送失败！");
+                     }
+                 });
+        	})
+        	
+       
+        
+        function clearForm() {
+            $('#mailForm')[0].reset();
+        }
+
+//         setInterval(function () {
+//             var total = $('#mq').width();
+//             var width = $('#doge').width();
+//             var left = $('#doge').offset().left;
+//             if (left <= width / 2 + 20) {
+//                 $('#doge').css('transform', 'rotateY(180deg)')
+//             }
+//             if (left >= total - width / 2 - 40) {
+//                 $('#doge').css('transform', 'rotateY(-360deg)')
+//             }
+//         });
+
+		function clickHandler(e) {
+			var v11 = document.getElementById(e);
+			if (v11.style.display == "block") {
+				v11.style.display = "none";
+			} else {
+				v11.style.display = "block";
+			}
+		}
+    </script>
+	</div>
+</body>
+</html>
